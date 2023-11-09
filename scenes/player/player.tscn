@@ -105,11 +105,11 @@ collision_mask = 14
 script = ExtResource("1_sssq5")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
+visible = false
 scale = Vector2(0.34375, 0.34375)
 texture = ExtResource("3_0q41r")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
 position = Vector2(0.499999, -18.8243)
 scale = Vector2(5.85714, 4.89697)
 texture = ExtResource("2_3e1bq")
@@ -129,39 +129,39 @@ libraries = {
 [node name="N" type="Node2D" parent="CollisionDetectors"]
 
 [node name="NNW" type="RayCast2D" parent="CollisionDetectors/N"]
-target_position = Vector2(-20, -26)
+target_position = Vector2(-20, -27)
 collision_mask = 5
 
 [node name="NNE" type="RayCast2D" parent="CollisionDetectors/N"]
-target_position = Vector2(20, -26)
+target_position = Vector2(20, -27)
 collision_mask = 5
 
 [node name="E" type="Node2D" parent="CollisionDetectors"]
 
 [node name="ENE" type="RayCast2D" parent="CollisionDetectors/E"]
-target_position = Vector2(26, -20)
+target_position = Vector2(27, -20)
 collision_mask = 5
 
 [node name="ESE" type="RayCast2D" parent="CollisionDetectors/E"]
-target_position = Vector2(26, 20)
+target_position = Vector2(27, 20)
 collision_mask = 5
 
 [node name="S" type="Node2D" parent="CollisionDetectors"]
 
 [node name="SSE" type="RayCast2D" parent="CollisionDetectors/S"]
-target_position = Vector2(20, 26)
+target_position = Vector2(20, 27)
 collision_mask = 5
 
 [node name="SSW" type="RayCast2D" parent="CollisionDetectors/S"]
-target_position = Vector2(-20, 26)
+target_position = Vector2(-20, 27)
 collision_mask = 5
 
 [node name="W" type="Node2D" parent="CollisionDetectors"]
 
 [node name="WNW" type="RayCast2D" parent="CollisionDetectors/W"]
-target_position = Vector2(-26, -20)
+target_position = Vector2(-27, -20)
 collision_mask = 5
 
 [node name="WSW" type="RayCast2D" parent="CollisionDetectors/W"]
-target_position = Vector2(-26, 20)
+target_position = Vector2(-27, 20)
 collision_mask = 5

@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://d1wnsi3y63q25"]
+[gd_scene load_steps=6 format=3 uid="uid://d1wnsi3y63q25"]
 
 [ext_resource type="PackedScene" uid="uid://drqjqsw402cma" path="res://scenes/player/player.tscn" id="1_hf26m"]
 [ext_resource type="Texture2D" uid="uid://b6hbkwh10ffvk" path="res://graphics/tilesets/MarketSet_Tileset.png" id="2_ohy0s"]
+[ext_resource type="PackedScene" uid="uid://bu1k8x4584euu" path="res://scenes/enemies/shopper.tscn" id="3_vq7vd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1mujp"]
 texture = ExtResource("2_ohy0s")
@@ -296,3 +297,6 @@ layer_2/tile_data = PackedInt32Array()
 
 [node name="Player" parent="." instance=ExtResource("1_hf26m")]
 position = Vector2(550, 360)
+
+[node name="Shopper" parent="." instance=ExtResource("3_vq7vd")]
+position = Vector2(216, 120)
