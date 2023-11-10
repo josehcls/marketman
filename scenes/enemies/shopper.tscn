@@ -8,7 +8,6 @@ size = Vector2(40, 40)
 
 [node name="Shopper" type="CharacterBody2D"]
 collision_layer = 2
-collision_mask = 5
 script = ExtResource("1_5cvwr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -20,47 +19,47 @@ shape = SubResource("RectangleShape2D_4u4yc")
 
 [node name="NNW" type="RayCast2D" parent="CollisionDetectors/N"]
 target_position = Vector2(-20, -27)
-collision_mask = 5
+collision_mask = 4
 
 [node name="NNE" type="RayCast2D" parent="CollisionDetectors/N"]
 target_position = Vector2(20, -27)
-collision_mask = 5
+collision_mask = 4
 
 [node name="E" type="Node2D" parent="CollisionDetectors"]
 
 [node name="ENE" type="RayCast2D" parent="CollisionDetectors/E"]
 target_position = Vector2(27, -20)
-collision_mask = 5
+collision_mask = 4
 
 [node name="ESE" type="RayCast2D" parent="CollisionDetectors/E"]
 target_position = Vector2(27, 20)
-collision_mask = 5
+collision_mask = 4
 
 [node name="S" type="Node2D" parent="CollisionDetectors"]
 
 [node name="SSE" type="RayCast2D" parent="CollisionDetectors/S"]
 target_position = Vector2(20, 27)
-collision_mask = 5
+collision_mask = 4
 
 [node name="SSW" type="RayCast2D" parent="CollisionDetectors/S"]
 target_position = Vector2(-20, 27)
-collision_mask = 5
+collision_mask = 4
 
 [node name="W" type="Node2D" parent="CollisionDetectors"]
 
 [node name="WNW" type="RayCast2D" parent="CollisionDetectors/W"]
 target_position = Vector2(-27, -20)
-collision_mask = 5
+collision_mask = 4
 
 [node name="WSW" type="RayCast2D" parent="CollisionDetectors/W"]
 target_position = Vector2(-27, 20)
-collision_mask = 5
-
-[node name="ChangeDirectionTimer" type="Timer" parent="."]
-autostart = true
+collision_mask = 4
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.3125, 0.3125)
 texture = ExtResource("2_tp504")
 
-[connection signal="timeout" from="ChangeDirectionTimer" to="." method="_on_change_direction_timer_timeout"]
+[node name="ImmunityTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="ImmunityTimer" to="." method="_on_immunity_timer_timeout"]

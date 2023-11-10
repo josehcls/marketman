@@ -54,4 +54,3 @@ func can_go(rays:Array[Node]) -> bool:
 	for ray in rays:
 		possible = possible and !(ray as RayCast2D).is_colliding()
 	return possible
-

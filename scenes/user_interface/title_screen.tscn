@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://56k05naptffg"]
+
+[ext_resource type="Texture2D" uid="uid://cte5muru1grgw" path="res://graphics/backgrounds/main_screen.jpg" id="1_r171v"]
+[ext_resource type="FontFile" uid="uid://0ii1nlwricrl" path="res://graphics/fonts/Public Market.ttf" id="2_0wu13"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_o8rhk"]
+font = ExtResource("2_0wu13")
+font_size = 60
+font_color = Color(0, 0.254902, 1, 1)
+shadow_size = 10
+shadow_color = Color(1, 1, 1, 1)
+
+[node name="TitleScreen" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("1_r171v")
+
+[node name="Title" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Title"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "MARKETMAN"
+label_settings = SubResource("LabelSettings_o8rhk")

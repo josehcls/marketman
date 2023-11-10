@@ -1,9 +1,12 @@
 extends CharacterBody2D
 
-var speed: int = 200
+var base_speed: int = 200
+var speed_multiplier: float = 1.0
 var direction: Vector2 = Vector2.ZERO
 var rng = RandomNumberGenerator.new()
+var can_collide: bool = true
 
+signal player_collision
 
 var collision_detectors = {
 	Vector2.LEFT: "CollisionDetectors/W",
@@ -15,16 +18,29 @@ var collision_detectors = {
 
 func _ready():
 	direction = pick_random_direction()
-	set_change_direction_timer()
 
 
 func _process(_delta):
+	var speed = base_speed * speed_multiplier
+	
 	var collision_detector = get_node(collision_detectors[direction]) as Node2D
 	if !can_go(collision_detector.get_children()):
 		direction = pick_random_direction()
 	
+	var possible_directions = get_possible_directions()
+	if len(possible_directions) >= 3:
+		var new_direction = possible_directions.pick_random()
+		if new_direction != (direction * -1):
+			direction = new_direction
+	
 	velocity = direction * speed
-	move_and_slide()
+	var collision = move_and_slide()
+	
+	if collision and can_collide:
+		can_collide = false
+		$ImmunityTimer.start()
+		direction *= -1
+		speed_multiplier = 1.5
 
 
 func can_go(rays:Array[Node]) -> bool:
@@ -39,12 +55,15 @@ func pick_random_direction():
 	return possible_directions.pick_random()
 
 
-func _on_change_direction_timer_timeout():
-	print('change direction!')
-	direction = pick_random_direction()
-	set_change_direction_timer()
+func get_possible_directions():
+	var possible_directions = []
+	for dir in collision_detectors:
+		var collision_detector = get_node(collision_detectors[dir]) as Node2D
+		if can_go(collision_detector.get_children()):
+			possible_directions.append(dir)
+	return possible_directions
 
 
-func set_change_direction_timer():
-	$ChangeDirectionTimer.wait_time = rng.randi_range(5, 15)
-	$ChangeDirectionTimer.start()
+func _on_immunity_timer_timeout():
+	can_collide = true
+	speed_multiplier = 1.0

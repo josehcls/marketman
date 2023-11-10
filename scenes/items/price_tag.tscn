@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://btgpsxibk5xvu"]
+
+[ext_resource type="Script" path="res://scenes/items/price_tag.gd" id="1_m4j2h"]
+[ext_resource type="Texture2D" uid="uid://clw1ilp3dy1iv" path="res://graphics/items/price_tag.png" id="2_7xmcx"]
+[ext_resource type="AudioStream" uid="uid://bjh4ifrsmir3j" path="res://sounds/beep.mp3" id="3_35vpr"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j3nyj"]
+radius = 10.6066
+height = 31.1127
+
+[node name="PriceTag" type="Area2D"]
+collision_layer = 8
+script = ExtResource("1_m4j2h")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1, 1)
+scale = Vector2(0.0625, 0.0625)
+texture = ExtResource("2_7xmcx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 0.785398
+shape = SubResource("CapsuleShape2D_j3nyj")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_35vpr")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
