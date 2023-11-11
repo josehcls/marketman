@@ -4,6 +4,7 @@ var base_speed: int = 300
 var speed_multiplier: float = 1.0
 var direction: Vector2 = Vector2.ZERO
 var next_direction: Vector2 = Vector2.ZERO
+var vulnerable: bool = true
 
 func _process(_delta):
 	var speed = base_speed * speed_multiplier
@@ -49,8 +50,27 @@ func _process(_delta):
 	velocity = direction * speed
 	move_and_slide()
 
+
 func can_go(rays:Array[Node]) -> bool:
 	var possible: bool = true
 	for ray in rays:
 		possible = possible and !(ray as RayCast2D).is_colliding()
 	return possible
+
+
+func collided():
+	print(vulnerable)
+	if vulnerable:
+		vulnerable = false
+		speed_multiplier = 0.5
+		$ImmunityTimer.start()
+		Globals.score -= 100 * (2 ** Globals.collision_multiplier)
+		Globals.collision_multiplier += 1
+		$AudioStreamPlayer2D.play()
+		direction *= -1
+
+
+func _on_immunity_timer_timeout():
+	print('out')
+	vulnerable = true
+	speed_multiplier = 1

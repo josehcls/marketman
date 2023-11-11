@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://drqjqsw402cma"]
+[gd_scene load_steps=12 format=3 uid="uid://drqjqsw402cma"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_sssq5"]
 [ext_resource type="Texture2D" uid="uid://4kgayj588cwh" path="res://graphics/characters/MarketSet_StoreEmployee.png" id="2_3e1bq"]
 [ext_resource type="Texture2D" uid="uid://cagdyrcxr571p" path="res://icon.svg" id="3_0q41r"]
+[ext_resource type="AudioStream" uid="uid://c31cpsdkdcla4" path="res://sounds/ouch.wav" id="4_dgp1s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vp57l"]
 size = Vector2(40, 40)
@@ -165,3 +166,12 @@ collision_mask = 5
 [node name="WSW" type="RayCast2D" parent="CollisionDetectors/W"]
 target_position = Vector2(-27, 20)
 collision_mask = 5
+
+[node name="ImmunityTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_dgp1s")
+
+[connection signal="timeout" from="ImmunityTimer" to="." method="_on_immunity_timer_timeout"]

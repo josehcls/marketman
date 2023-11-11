@@ -4,10 +4,11 @@ signal stat_changed
 
 var last_hi_score: int = 50
 var hi_score: int = last_hi_score
+var collision_multiplier: int = 1
 
 var score: int = 0:
 	set(value):
-		score = value
+		score = max(value, 0)
 		
 		if score >= last_hi_score:
 			hi_score = score

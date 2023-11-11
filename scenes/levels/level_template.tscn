@@ -302,9 +302,6 @@ layer_2/tile_data = PackedInt32Array()
 [node name="Player" parent="." instance=ExtResource("1_hf26m")]
 position = Vector2(550, 360)
 
-[node name="Shopper" parent="." instance=ExtResource("3_vq7vd")]
-position = Vector2(216, 120)
-
 [node name="UI" parent="." instance=ExtResource("4_201g7")]
 
 [node name="SecondCounter" type="Timer" parent="."]
@@ -314,5 +311,18 @@ autostart = true
 
 [node name="PriceTag" parent="Items" instance=ExtResource("6_wbuft")]
 position = Vector2(616, 359)
+
+[node name="Shoppers" type="Node2D" parent="."]
+
+[node name="Shopper" parent="Shoppers" instance=ExtResource("3_vq7vd")]
+position = Vector2(216, 120)
+
+[node name="Shopper2" parent="Shoppers" instance=ExtResource("3_vq7vd")]
+position = Vector2(216, 120)
+sprite = "res://graphics/characters/MarketSet_Customer2.png"
+
+[node name="Shopper3" parent="Shoppers" instance=ExtResource("3_vq7vd")]
+position = Vector2(294, 600)
+sprite = "res://graphics/characters/MarketSet_Customer3.png"
 
 [connection signal="timeout" from="SecondCounter" to="." method="_on_second_counter_timeout"]
