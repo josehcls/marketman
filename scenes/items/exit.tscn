@@ -1,8 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://d23nxwseaj26l"]
+[gd_scene load_steps=3 format=3 uid="uid://d23nxwseaj26l"]
 
+[ext_resource type="Texture2D" uid="uid://cgpgtgf4q4v2f" path="res://graphics/items/exit.png" id="1_31psp"]
 [ext_resource type="Script" path="res://scenes/items/exit.gd" id="1_dtrjy"]
 
 [node name="Exit" type="Area2D"]
+collision_layer = 8
 script = ExtResource("1_dtrjy")
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_31psp")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-58, -103, -58, 14, -105, 14, -1, 106, 108, 18, 60, 18, 60, -103)
+
+[connection signal="player_exited_level" from="." to="." method="_on_player_exited_level"]

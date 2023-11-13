@@ -17,7 +17,7 @@ var score: int = 0:
 			
 		stat_changed.emit()
 
-var time_left: int = 999:
+var time_left: int = 50:
 	set(value):
 		time_left = value
 		stat_changed.emit()

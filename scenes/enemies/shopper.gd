@@ -7,7 +7,14 @@ var rng = RandomNumberGenerator.new()
 var can_collide: bool = true
 var can_change_direction: bool = true
 
-@export var sprite: String = ""
+@export var sprite_variation: int = 0
+
+var sprites = {
+	0: preload("res://graphics/characters/MarketSet_Customer1.png"),
+	1: preload("res://graphics/characters/MarketSet_Customer2.png"),
+	2: preload("res://graphics/characters/MarketSet_Customer3.png"),
+	3: preload("res://graphics/characters/MarketSet_Customer4.png")
+}
 
 signal player_collision
 
@@ -20,7 +27,7 @@ var collision_detectors = {
 
 
 func _ready():
-	$Sprite2D.texture.set = sprite
+	$Sprite2D.set_texture(sprites[sprite_variation])
 	direction = pick_random_direction()
 
 

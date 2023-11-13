@@ -59,18 +59,16 @@ func can_go(rays:Array[Node]) -> bool:
 
 
 func collided():
-	print(vulnerable)
 	if vulnerable:
 		vulnerable = false
 		speed_multiplier = 0.5
 		$ImmunityTimer.start()
-		Globals.score -= 100 * (2 ** Globals.collision_multiplier)
+		Globals.score -= 100 * (2 * Globals.collision_multiplier)
 		Globals.collision_multiplier += 1
 		$AudioStreamPlayer2D.play()
 		direction *= -1
 
 
 func _on_immunity_timer_timeout():
-	print('out')
 	vulnerable = true
 	speed_multiplier = 1
