@@ -1,7 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://56k05naptffg"]
+[gd_scene load_steps=8 format=3 uid="uid://56k05naptffg"]
 
+[ext_resource type="Script" path="res://scenes/user_interface/title_screen.gd" id="1_aqcms"]
 [ext_resource type="Texture2D" uid="uid://cte5muru1grgw" path="res://graphics/backgrounds/main_screen.jpg" id="1_r171v"]
 [ext_resource type="FontFile" uid="uid://0ii1nlwricrl" path="res://graphics/fonts/Public Market.ttf" id="2_0wu13"]
+[ext_resource type="AudioStream" uid="uid://3mnwovxk05xg" path="res://sounds/click.wav" id="4_6h4ku"]
+[ext_resource type="FontFile" uid="uid://dl446fh22pgq2" path="res://graphics/fonts/Computerfont.ttf" id="4_xs4yj"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_o8rhk"]
 font = ExtResource("2_0wu13")
@@ -10,21 +13,18 @@ font_color = Color(0, 0.254902, 1, 1)
 shadow_size = 10
 shadow_color = Color(1, 1, 1, 1)
 
-[sub_resource type="Theme" id="Theme_p00cf"]
-default_font = ExtResource("2_0wu13")
-default_font_size = 30
-
-[sub_resource type="InputEventKey" id="InputEventKey_a3j2j"]
-device = -1
-keycode = 4194309
-
-[sub_resource type="Shortcut" id="Shortcut_odmom"]
-events = [SubResource("InputEventKey_a3j2j")]
+[sub_resource type="LabelSettings" id="LabelSettings_vufec"]
+font = ExtResource("4_xs4yj")
+font_size = 62
+font_color = Color(0, 0, 0, 1)
+shadow_size = 13
+shadow_color = Color(1, 1, 1, 1)
 
 [node name="TitleScreen" type="Node2D"]
+script = ExtResource("1_aqcms")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(640, 407)
+position = Vector2(637, 407)
 scale = Vector2(1.24805, 0.933594)
 texture = ExtResource("1_r171v")
 
@@ -43,12 +43,14 @@ offset_bottom = 114.0
 text = "MARKETMAN"
 label_settings = SubResource("LabelSettings_o8rhk")
 
-[node name="Button" type="Button" parent="."]
-offset_left = 833.0
-offset_top = 468.0
-offset_right = 1162.0
-offset_bottom = 573.0
-theme = SubResource("Theme_p00cf")
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-shortcut = SubResource("Shortcut_odmom")
-text = "PLAY"
+[node name="Label2" type="Label" parent="Title"]
+layout_mode = 0
+offset_left = 293.0
+offset_top = 533.0
+offset_right = 1132.0
+offset_bottom = 617.0
+text = "- aperte enter para jogar -"
+label_settings = SubResource("LabelSettings_vufec")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_6h4ku")

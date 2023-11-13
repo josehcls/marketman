@@ -1,0 +1,180 @@
+[gd_scene load_steps=8 format=3 uid="uid://obvk8vetyn5h"]
+
+[ext_resource type="Script" path="res://scenes/user_interface/score_screen.gd" id="1_flr6c"]
+[ext_resource type="Texture2D" uid="uid://dvpb3kv62covd" path="res://graphics/backgrounds/blank.png" id="1_jm7nq"]
+[ext_resource type="FontFile" uid="uid://0ii1nlwricrl" path="res://graphics/fonts/Public Market.ttf" id="2_yacs3"]
+[ext_resource type="AudioStream" uid="uid://3mnwovxk05xg" path="res://sounds/click.wav" id="4_cwhmf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_02aix"]
+line_spacing = 40.0
+font = ExtResource("2_yacs3")
+font_size = 24
+font_color = Color(1, 1, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_h5fac"]
+line_spacing = 30.0
+font = ExtResource("2_yacs3")
+font_size = 14
+
+[sub_resource type="LabelSettings" id="LabelSettings_8xn7c"]
+font = ExtResource("2_yacs3")
+
+[node name="Score Screen" type="Node2D"]
+script = ExtResource("1_flr6c")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(642, 322)
+scale = Vector2(0.62793, 0.630859)
+texture = ExtResource("1_jm7nq")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1281.0
+offset_bottom = 640.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4
+anchor_top = 0.202
+anchor_right = 0.6
+anchor_bottom = 0.202
+offset_left = -203.5
+offset_right = 203.5
+offset_bottom = 387.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "SCORE   FINAL"
+label_settings = SubResource("LabelSettings_02aix")
+
+[node name="Collected" type="HBoxContainer" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/Collected"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "COLETADOS: "
+label_settings = SubResource("LabelSettings_h5fac")
+
+[node name="Value" type="Label" parent="Control/VBoxContainer/Collected"]
+modulate = Color(0, 1, 0, 1)
+layout_mode = 2
+size_flags_horizontal = 8
+text = "#"
+label_settings = SubResource("LabelSettings_h5fac")
+
+[node name="Shoppers" type="HBoxContainer" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/Shoppers"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "CLIENTES: "
+label_settings = SubResource("LabelSettings_h5fac")
+
+[node name="Value" type="Label" parent="Control/VBoxContainer/Shoppers"]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+size_flags_horizontal = 8
+text = " #"
+label_settings = SubResource("LabelSettings_h5fac")
+
+[node name="TimeLeft" type="HBoxContainer" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/TimeLeft"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "TEMPO RESTANTE: "
+label_settings = SubResource("LabelSettings_h5fac")
+
+[node name="Value" type="Label" parent="Control/VBoxContainer/TimeLeft"]
+modulate = Color(0, 1, 0, 1)
+layout_mode = 2
+size_flags_horizontal = 8
+text = "#"
+label_settings = SubResource("LabelSettings_h5fac")
+
+[node name="Blank1" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_02aix")
+
+[node name="FinalScoreValue" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "0000000000000"
+label_settings = SubResource("LabelSettings_02aix")
+
+[node name="Blank2" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_02aix")
+
+[node name="Label3" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "HI-SCORES"
+label_settings = SubResource("LabelSettings_02aix")
+
+[node name="HiScore1" type="HBoxContainer" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Value" type="Label" parent="Control/VBoxContainer/HiScore1"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "AAA: 2000"
+label_settings = SubResource("LabelSettings_h5fac")
+
+[node name="HiScore2" type="HBoxContainer" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Value" type="Label" parent="Control/VBoxContainer/HiScore2"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "AAA: 1750"
+label_settings = SubResource("LabelSettings_h5fac")
+
+[node name="HiScore3" type="HBoxContainer" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Value" type="Label" parent="Control/VBoxContainer/HiScore3"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "AAA: 1000"
+label_settings = SubResource("LabelSettings_h5fac")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 994.0
+offset_top = 514.0
+offset_right = 1224.0
+offset_bottom = 597.0
+color = Color(1, 1, 1, 0.14902)
+
+[node name="Label" type="Label" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -91.5
+offset_top = -9.5
+offset_right = 91.5
+offset_bottom = 9.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "ENTER >>"
+label_settings = SubResource("LabelSettings_8xn7c")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_cwhmf")

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bl63twpgpkg0a"]
+
+[ext_resource type="AudioStream" uid="uid://cnjknlarmi73l" path="res://sounds/404848__orginaljun__chiptune_55_second_loop-_11.wav" id="1_14pvo"]
+
+[node name="Music" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_14pvo")
+autoplay = true

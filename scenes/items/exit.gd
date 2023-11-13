@@ -8,6 +8,5 @@ func _process(delta):
 	global_position.y += sin(angle_rad * 2) / 20
 
 
-func _on_player_exited_level():
+func _on_body_entered(_body):
 	player_exited_level.emit()
-

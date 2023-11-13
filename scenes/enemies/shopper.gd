@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 var base_speed: int = 200
-var speed_multiplier: float = 1.0
+@export var speed_multiplier: float = 1.0
 var direction: Vector2 = Vector2.ZERO
 var rng = RandomNumberGenerator.new()
 var can_collide: bool = true
@@ -29,6 +29,7 @@ var collision_detectors = {
 func _ready():
 	$Sprite2D.set_texture(sprites[sprite_variation])
 	direction = pick_random_direction()
+	speed_multiplier = 1.0
 
 
 func _process(_delta):

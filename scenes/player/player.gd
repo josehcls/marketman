@@ -6,6 +6,7 @@ var direction: Vector2 = Vector2.ZERO
 var next_direction: Vector2 = Vector2.ZERO
 var vulnerable: bool = true
 
+
 func _process(_delta):
 	var speed = base_speed * speed_multiplier
 	
@@ -38,6 +39,9 @@ func _process(_delta):
 		else:
 			next_direction = Vector2.UP
 	
+	if speed_multiplier == 0:
+		$AnimationPlayer.stop()
+	
 	if direction == Vector2.RIGHT and !can_go($CollisionDetectors/E.get_children()):
 		direction = Vector2.ZERO
 	elif direction == Vector2.LEFT and !can_go($CollisionDetectors/W.get_children()):
@@ -63,7 +67,7 @@ func collided():
 		vulnerable = false
 		speed_multiplier = 0.5
 		$ImmunityTimer.start()
-		Globals.score -= 100 * (2 * Globals.collision_multiplier)
+		Globals.score -= 150
 		Globals.collision_multiplier += 1
 		$AudioStreamPlayer2D.play()
 		direction *= -1

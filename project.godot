@@ -11,18 +11,26 @@ config_version=5
 [application]
 
 config/name="MarketMan"
-run/main_scene="res://scenes/levels/level_template.tscn"
+run/main_scene="res://scenes/user_interface/title_screen.tscn"
 config/features=PackedStringArray("4.1", "Mobile")
 config/icon="res://icon.svg"
 
 [autoload]
 
 Globals="*res://globals/globals.gd"
+TransitionLayer="*res://globals/transition_layer.tscn"
+Music="*res://globals/music.tscn"
 
 [display]
 
 window/size/viewport_width=1280
 window/size/viewport_height=640
+
+[importer_defaults]
+
+wav={
+"edit/loop_mode": 2
+}
 
 [input]
 

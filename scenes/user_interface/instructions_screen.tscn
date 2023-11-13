@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://rnmveugr7stp"]
+
+[ext_resource type="Texture2D" uid="uid://bl6y3xelcej38" path="res://graphics/backgrounds/instructions.png" id="1_pbph6"]
+[ext_resource type="Script" path="res://scenes/user_interface/instructions_screen.gd" id="1_xly6f"]
+[ext_resource type="FontFile" uid="uid://0ii1nlwricrl" path="res://graphics/fonts/Public Market.ttf" id="2_7j4l0"]
+[ext_resource type="AudioStream" uid="uid://3mnwovxk05xg" path="res://sounds/click.wav" id="3_c5scv"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_n4ykp"]
+font = ExtResource("2_7j4l0")
+
+[node name="InstructionsScreen" type="Node2D"]
+script = ExtResource("1_xly6f")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(648, 322)
+scale = Vector2(0.632813, 0.632813)
+texture = ExtResource("1_pbph6")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 994.0
+offset_top = 514.0
+offset_right = 1224.0
+offset_bottom = 597.0
+color = Color(1, 1, 1, 0.14902)
+
+[node name="Label" type="Label" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -91.5
+offset_top = -9.5
+offset_right = 91.5
+offset_bottom = 9.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "ENTER >>"
+label_settings = SubResource("LabelSettings_n4ykp")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_c5scv")

@@ -9,6 +9,7 @@ func _process(delta):
 
 func _on_body_entered(_body):
 	Globals.score += 100
+	Globals.collected += 1
 	$AudioStreamPlayer2D.play()
 	$Sprite2D.hide()
 	await $AudioStreamPlayer2D.finished

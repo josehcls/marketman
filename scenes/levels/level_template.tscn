@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://d1wnsi3y63q25"]
+[gd_scene load_steps=13 format=3 uid="uid://d1wnsi3y63q25"]
 
 [ext_resource type="PackedScene" uid="uid://drqjqsw402cma" path="res://scenes/player/player.tscn" id="1_hf26m"]
 [ext_resource type="Script" path="res://scenes/levels/level_template.gd" id="1_uongm"]
@@ -7,6 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://dm3jqcbop4egp" path="res://scenes/user_interface/ui.tscn" id="4_201g7"]
 [ext_resource type="PackedScene" uid="uid://btgpsxibk5xvu" path="res://scenes/items/price_tag.tscn" id="6_wbuft"]
 [ext_resource type="PackedScene" uid="uid://d23nxwseaj26l" path="res://scenes/items/exit.tscn" id="7_y74e2"]
+[ext_resource type="AudioStream" uid="uid://b4q3f51vt0jnx" path="res://sounds/time_alert.wav" id="8_g242x"]
+[ext_resource type="AudioStream" uid="uid://c6cc7c6fd83s0" path="res://sounds/exit_fanfarre.mp3" id="9_cfg0y"]
+[ext_resource type="AudioStream" uid="uid://dynqgxem1cy55" path="res://sounds/times_over.wav" id="10_k5qp5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1mujp"]
 texture = ExtResource("2_ohy0s")
@@ -300,6 +303,10 @@ layer_2/y_sort_origin = 0
 layer_2/z_index = 1
 layer_2/tile_data = PackedInt32Array()
 
+[node name="Exit" parent="." instance=ExtResource("7_y74e2")]
+position = Vector2(624, 39)
+scale = Vector2(0.3, 0.3)
+
 [node name="Player" parent="." instance=ExtResource("1_hf26m")]
 position = Vector2(550, 360)
 
@@ -347,10 +354,19 @@ position = Vector2(543, 212)
 position = Vector2(740, 221)
 
 [node name="PriceTag13" parent="Items" instance=ExtResource("6_wbuft")]
-position = Vector2(745, 361)
+position = Vector2(698, 360)
 
 [node name="PriceTag14" parent="Items" instance=ExtResource("6_wbuft")]
-position = Vector2(641, 360)
+position = Vector2(976, 360)
+
+[node name="PriceTag18" parent="Items" instance=ExtResource("6_wbuft")]
+position = Vector2(217, 366)
+
+[node name="PriceTag19" parent="Items" instance=ExtResource("6_wbuft")]
+position = Vector2(840, 507)
+
+[node name="PriceTag20" parent="Items" instance=ExtResource("6_wbuft")]
+position = Vector2(360, 505)
 
 [node name="PriceTag15" parent="Items" instance=ExtResource("6_wbuft")]
 position = Vector2(408, 121)
@@ -359,7 +375,7 @@ position = Vector2(408, 121)
 position = Vector2(147, 121)
 
 [node name="PriceTag17" parent="Items" instance=ExtResource("6_wbuft")]
-position = Vector2(693, 119)
+position = Vector2(688, 118)
 
 [node name="Shoppers" type="Node2D" parent="."]
 
@@ -374,8 +390,14 @@ sprite_variation = 2
 position = Vector2(294, 600)
 sprite_variation = 1
 
-[node name="Exit" parent="." instance=ExtResource("7_y74e2")]
-position = Vector2(624, 39)
-scale = Vector2(0.3, 0.3)
+[node name="TimeAlertSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_g242x")
 
+[node name="PlayerExitedSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_cfg0y")
+
+[node name="TimeOutSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_k5qp5")
+
+[connection signal="player_exited_level" from="Exit" to="." method="_on_exit_player_exited_level"]
 [connection signal="timeout" from="SecondCounter" to="." method="_on_second_counter_timeout"]
